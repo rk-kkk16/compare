@@ -1,0 +1,22 @@
+{
+  "name": "compare",
+  "version": "1.0.0",
+  "description": "compare price",
+  "author": "rkwmt",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "node-sass": "^4.13.1",
+    "nuxt": "^2.0.0",
+    "nuxt-buefy": "^0.3.2",
+    "sass-loader": "^8.0.2",
+    "vee-validate": "^3.2.3"
+  },
+  "devDependencies": {}
+}
