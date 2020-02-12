@@ -1,7 +1,7 @@
 {
 	"name":				"単価で比較",
 	"short_name":		"PriceCompare",
-	"description":		"単価を計算、同じ品目で一括比較",
+	"description":		"単価を計算、同じ品目で一括比較！",
 	"start_url":		"/compare/",
 	"display":			"standalone",
 	"orientation":		"any",

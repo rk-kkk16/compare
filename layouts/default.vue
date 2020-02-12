@@ -13,7 +13,7 @@
           <img
             src="~assets/logo.png"
             alt="nyanch"
-            height="28"
+            height="32"
           >
         </a>
       </div>
