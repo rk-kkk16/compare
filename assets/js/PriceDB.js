@@ -62,6 +62,25 @@ class PriceDB extends DB {
             };
         });
     }
+
+    //shop_id指定で全取得
+    async getByShopId(shop_id) {
+        return new Promise((resolve, reject) => {
+            var items = [];
+            var store = this.getStore();
+            var range= IDBKeyRange.only(shop_id);
+            var req = store.index('shop_id').openCursor(range, 'next');
+            req.onsuccess = function() {
+                var cursor = req.result;
+                if (cursor) {
+                    var row = cursor.value;
+                    items.push(row);
+                    cursor.continue();
+                }
+                resolve(items);
+            };
+        });
+    }
 }
 
 export default new PriceDB();
