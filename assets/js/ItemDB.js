@@ -46,6 +46,23 @@ class ItemDB extends DB {
             };
         });
     }
+
+    //parent_id指定、一番最後に追加したitemの取得
+    async getLatestItem(parent_id) {
+        return new Promise((resolve, reject) => {
+            var item = null;
+            var store = this.getStore();
+            var range= IDBKeyRange.only(parent_id);
+            var req = store.index('parent_id').openCursor(range, 'prev');
+            req.onsuccess = function() {
+                var cursor = req.result;
+                if (cursor) {
+                    item = cursor.value;
+                }
+                resolve(item);
+            };
+        });
+    }
 }
 
 export default new ItemDB();

@@ -167,8 +167,10 @@ export default {
             }
             this.shop_add = '';
             shopdb.add({shop_name:shop_name});
-            //新しいデータでoptionsリフレッシュ
-            this.shopdatas = await shopdb.getAll();
+
+            var latest_shop = await shopdb.getLatestShop();
+            this.shopdatas.push(latest_shop);
+            this.shop = latest_shop.shop_id;
         },
 
         //品目の登録
@@ -190,9 +192,15 @@ export default {
 
             this.item_add = '';
             itemdb.add({item_name: item_name, parent_id: parent_id});
-            this.item1datas = await itemdb.getChilds(0);
+
             if (parent_id != 0) {
-                this.item2datas = await itemdb.getChilds(parent_id);
+                var latest_item_2 = await itemdb.getLatestItem(parent_id);
+                this.item2datas.push(latest_item_2);
+                this.item_2 = latest_item_2.item_id;
+            } else {
+                var latest_item_1 = await itemdb.getLatestItem(0);
+                this.item1datas.push(latest_item_1);
+                this.item_1 = latest_item_1.item_id;
             }
         },
 

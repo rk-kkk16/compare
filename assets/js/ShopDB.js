@@ -26,6 +26,22 @@ class ShopDB extends DB {
             };
         });
     }
+
+    //一番最後に追加したshopの取得
+    async getLatestShop() {
+        return new Promise((resolve, reject) => {
+            var shop = null;
+            var store = this.getStore();
+            var range = IDBKeyRange.lowerBound(0, true);
+            store.openCursor(range, 'prev').onsuccess = function(event) {
+                var cursor = event.target.result;
+                if (cursor) {
+                    shop = cursor.value;
+                }
+                resolve(shop);
+            };
+        });
+    }
 }
 
 export default new ShopDB();
