@@ -37,6 +37,9 @@
               <a @click="isActive = !isActive;$router.push({path:'/'})" style="display:block;">TOP</a>
           </div>
           <div class="navbar-item">
+              <a @click="isActive = !isActive;$router.push({path:'/items'})" style="display:block">品目管理</a>
+          </div>
+          <div class="navbar-item">
               <a @click="isActive = !isActive;$router.push({path:'/shops'})" style="display:block">店舗管理</a>
           </div>
       </div>
