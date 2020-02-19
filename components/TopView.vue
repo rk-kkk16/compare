@@ -201,6 +201,10 @@ export default {
                 var latest_item_1 = await itemdb.getLatestItem(0);
                 this.item1datas.push(latest_item_1);
                 this.item_1 = latest_item_1.item_id;
+
+                this.showItem2 = true;
+                this.item2datas = [];
+                this.item_2 = 0;
             }
         },
 
