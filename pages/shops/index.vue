@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     <tr v-for="shop in shops">
-        <td>{{ shop.shop_name }}</td>
+        <td><a @click="$router.push({path:'/shops/'+shop.shop_id})">{{ shop.shop_name }}</a></td>
         <td>
             <b-button @click="openEditDialog(shop.shop_id, shop.shop_name)">編集</b-button>
         </td>

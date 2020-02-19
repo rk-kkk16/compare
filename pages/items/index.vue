@@ -10,7 +10,7 @@
     <tbody v-if="items.length > 0">
         <template v-for="item in items">
           <tr>
-            <td>{{ item.item_name }}</td>
+            <td><a @click="$router.push({path:'/items/'+item.item_id})">{{ item.item_name }}</a></td>
             <td style="width:3em">
                <template v-if="subitems[item.item_id] && subitems[item.item_id].length > 0">
                  <button v-if="subitem_visis[item.item_id]=='none'" @click="subitem_visis[item.item_id] = ''">▼</button>
@@ -22,7 +22,11 @@
           </tr>
           <template v-if="subitems[item.item_id] && subitems[item.item_id].length > 0">
             <tr v-for="subitem in subitems[item.item_id]" :style="{'display':subitem_visis[item.item_id]}">
-                <td style="padding-left:4em" colspan="2">{{ subitem.item_name }}</td>
+                <td style="padding-left:4em" colspan="2">
+                    <a @click="$router.push({path:'/items/'+subitem.item_id})">
+                        {{ subitem.item_name }}
+                    </a>
+                </td>
                 <td><button @click="openEditDialog(subitem.item_id, subitem.item_name, subitem.parent_id)">編集</button></td>
                 <td><button @click="delSubConfirm(subitem.item_id, subitem.item_name, subitem.parent_id)">削除</button></td>
             </tr>
