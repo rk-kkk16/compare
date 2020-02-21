@@ -72,6 +72,7 @@
     <div class="columns">
       <div class="column is-full">
         <b-select v-model="shop" expanded="true">
+          <option value="0">(選択なし)</option>
           <option v-for="shopdata in shopdatas" :value="shopdata.shop_id">{{ shopdata.shop_name }}</option>
         </b-select>
       </div>

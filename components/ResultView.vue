@@ -1,7 +1,7 @@
 <template>
 <section id="resultview">
 
-  <b-table :data="calcresult" :columns="columns">
+  <b-table :data="calcresult" :columns="columns" :mobile-cards="false">
     <template slot-scope="props">
       <b-table-column field="mark" label="" class="field">
         <template v-for="mark in props.row.mark">
@@ -42,9 +42,15 @@ export default {
             this.calcresult = [];
 
             var shopdb = await ShopDB.connect();
-            var now_shop = await shopdb.get(now_shop_id);
+            var now_shop_name = '';
+            if (now_shop_id) {
+                var now_shop = await shopdb.get(parseInt(now_shop_id));
+                if (now_shop) {
+                    now_shop_name = now_shop.shop_name;
+                }
+            }
 
-            this.calcresult.push({mark:['now'], price:now_unit_price, shop:now_shop.shop_name, lastmodified:''});
+            this.calcresult.push({mark:['now'], price:now_unit_price, shop:now_shop_name, lastmodified:''});
             var pricedb = await PriceDB.connect();
             var prices = await pricedb.getByItemId(now_item_id);
 
