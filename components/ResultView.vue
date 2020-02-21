@@ -38,13 +38,13 @@ export default {
         this.$nuxt.$on('COMPARE_EVENT', async data => {
             var now_unit_price = data.unit_price;
             var now_item_id = data.item_id;
-            var now_shop_id = data.shop_id;
+            var now_shop_id = parseInt(data.shop_id);
             this.calcresult = [];
 
             var shopdb = await ShopDB.connect();
             var now_shop_name = '';
             if (now_shop_id) {
-                var now_shop = await shopdb.get(parseInt(now_shop_id));
+                var now_shop = await shopdb.get(now_shop_id);
                 if (now_shop) {
                     now_shop_name = now_shop.shop_name;
                 }
@@ -75,6 +75,12 @@ export default {
                 else if (a.price > b.price) { return 1; }
                 else { return 0; }
             });
+
+            //指定品目、店舗について単価をオートセーブ
+            if (this.$store.state['auto_save'].setting == 'ON' && now_shop_id > 0) {
+                pricedb.save(now_item_id, now_shop_id, now_unit_price);
+                this.$buefy.toast.open('単価をオートセーブしました。');
+            }
         })
     }
 }

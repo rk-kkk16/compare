@@ -42,6 +42,9 @@
           <div class="navbar-item">
               <a @click="isActive = !isActive;$router.push({path:'/shops/'})" style="display:block">店舗管理</a>
           </div>
+          <div class="navbar-item">
+              <a @click="$store.commit('auto_save/dip');">オートセーブ：{{ $store.state['auto_save'].setting }}</a>
+          </div>
       </div>
     </nav>
 

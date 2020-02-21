@@ -16,7 +16,8 @@
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.2",
     "sass-loader": "^8.0.2",
-    "vee-validate": "^3.2.3"
+    "vee-validate": "^3.2.3",
+    "vuex-persistedstate": "^2.7.1"
   },
   "devDependencies": {}
 }

@@ -31,6 +31,7 @@ export default {
   plugins: [
       '~/plugins/vee-validate',
       '~/plugins/utils',
+      { src:'~/plugins/persistedstate.js', ssr:false},
   ],
   /*
   ** Nuxt.js dev-modules
