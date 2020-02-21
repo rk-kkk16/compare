@@ -284,7 +284,7 @@ export default {
                 alert('品目を指定してください。');
                 return;
             }
-            this.$nuxt.$emit('COMPARE_EVENT', {unit_price:unit_price, item_id:item_id});
+            this.$nuxt.$emit('COMPARE_EVENT', {unit_price:unit_price, item_id:item_id, shop_id:parseInt(this.shop)});
         }
     },
 }
